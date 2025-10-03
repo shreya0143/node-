@@ -1,0 +1,52 @@
+{
+    "prodtcts": [
+        {
+            "id": 2,
+            "name": "Samsung Galaxy S23",
+            "category": "Electronics",
+            "price": 900
+        },
+        {
+            "id": 3,
+            "name": "Nike Shoes",
+            "category": "Fashion",
+            "price": 120
+        },
+        {
+            "name": "ipone 14",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 5
+        },
+        {
+            "name": "ipone 11",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 7
+        },
+        {
+            "name": "ipone 12",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 8
+        },
+        {
+            "name": "ipone 13",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 9
+        },
+        {
+            "name": "ipone 15",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 10
+        },
+        {
+            "name": "ipone 17",
+            "category": "electronics",
+            "price": "1000$",
+            "id": 11
+        }
+    ]
+}
