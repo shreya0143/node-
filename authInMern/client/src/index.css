@@ -1,0 +1,85 @@
+/* Background */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Main Box */
+.auth-container {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-box {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.15);
+  transition: 0.4s;
+}
+
+.auth-box:hover {
+  transform: scale(1.01);
+}
+
+/* Heading */
+.auth-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Input */
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #6a11cb;
+  box-shadow: 0px 0px 8px rgba(106, 17, 203, 0.3);
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 12px;
+  background: #6a11cb;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #2575fc;
+}
+
+/* Toggle Login/Register */
+.toggle-text {
+  margin-top: 15px;
+  text-align: center;
+  color: #444;
+}
+
+.toggle-text span {
+  color: #2575fc;
+  font-weight: 600;
+  cursor: pointer;
+}
