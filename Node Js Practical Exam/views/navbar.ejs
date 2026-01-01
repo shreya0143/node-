@@ -1,0 +1,19 @@
+<nav>
+    <div class="container">
+        <div style="display: flex; align-items: center; gap: 2rem;">
+            <a href="/" class="brand">🍳 Gourmet Recipes</a>
+        </div>
+        <ul>
+            <li><a href="/recipes">All Recipes</a></li>
+            <% if (user) { %>
+                <li><a href="/my-recipes">My Recipes</a></li>
+                <li><a href="/my-favorites">My Favorites</a></li>
+                <li><a href="/create-recipe">Create Recipe</a></li>
+                <li><a href="/logout">Logout (<%= user.username %>)</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                    <% } %>
+        </ul>
+    </div>
+</nav>

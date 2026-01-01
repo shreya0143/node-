@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= recipe ? 'Edit' : 'Create' %> Recipe - Gourmet Recipes
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <%- include('navbar.ejs') %>
+
+        <div class="container">
+            <div class="recipe-form">
+                <h2>
+                    <%= recipe ? 'Edit Recipe' : 'Add New Recipe' %>
+                </h2>
+                <% if (typeof error !=='undefined' && error) { %>
+                    <div class="error">
+                        <%= error %>
+                    </div>
+                    <% } %>
+                        <form action="<%= recipe ? '/recipes/edit/' + recipe._id : '/create-recipe' %>" method="POST">
+                            <div class="form-group">
+                                <label for="title">Recipe Title</label>
+                                <input type="text" id="title" name="title" value="<%= recipe ? recipe.title : '' %>"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Image URL (Optional)</label>
+                                <input type="text" id="image" name="image" value="<%= recipe ? recipe.image : '' %>"
+                                    placeholder="http://example.com/food.jpg">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="cookingTime">Cooking Time</label>
+                                <input type="text" id="cookingTime" name="cookingTime"
+                                    value="<%= recipe ? recipe.cookingTime : '' %>" placeholder="e.g. 45 mins" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Category</label>
+                                <select id="category" name="category">
+                                    <% const categories=['Breakfast', 'Lunch' , 'Dinner' , 'Dessert' , 'Snack'
+                                        , 'Beverage' ]; %>
+                                        <% categories.forEach(cat=> { %>
+                                            <option value="<%= cat %>" <%=(recipe && recipe.category===cat) ? 'selected'
+                                                : '' %>><%= cat %>
+                                            </option>
+                                            <% }); %>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="difficulty">Difficulty</label>
+                                <select id="difficulty" name="difficulty">
+                                    <option value="Easy" <%=(recipe && recipe.difficulty==='Easy' ) ? 'selected' : '' %>
+                                        >Easy</option>
+                                    <option value="Medium" <%=(recipe && recipe.difficulty==='Medium' ) ? 'selected'
+                                        : '' %>>Medium</option>
+                                    <option value="Hard" <%=(recipe && recipe.difficulty==='Hard' ) ? 'selected' : '' %>
+                                        >Hard</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ingredients">Ingredients (One per line)</label>
+                                <textarea id="ingredients" name="ingredients" rows="5"
+                                    required><%= recipe ? recipe.ingredients.join('\n') : '' %></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="instructions">Instructions</label>
+                                <textarea id="instructions" name="instructions" rows="8"
+                                    required><%= recipe ? recipe.instructions : '' %></textarea>
+                            </div>
+
+                            <button type="submit">
+                                <%= recipe ? 'Update Recipe' : 'Share Recipe' %>
+                            </button>
+                        </form>
+            </div>
+        </div>
+</body>
+
+</html>

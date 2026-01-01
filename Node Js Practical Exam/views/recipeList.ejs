@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gourmet Recipes</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <%- include('navbar.ejs') %>
+
+        <div class="container">
+            <% if (typeof searchQuery !=='undefined' && searchQuery) { %>
+                <h1>Search Results for "<%= searchQuery %>"</h1>
+                <a href="/recipes" style="display:inline-block; margin-bottom: 20px; color: var(--primary);">← Back to
+                    All Recipes</a>
+                <% } else { %>
+                    <h1>Welcome to Gourmet Recipes</h1>
+                    <% } %>
+
+                        <div class="recipe-grid">
+                            <% if (recipes.length> 0) { %>
+                                <% recipes.forEach(recipe=> { %>
+                                    <div class="recipe-card">
+                                        <img src="<%= recipe.image %>" alt="<%= recipe.title %>"
+                                            onerror="this.src='https://via.placeholder.com/300?text=No+Image'">
+                                        <% if (typeof user !=='undefined' && user) { %>
+                                            <form action="/recipes/<%= recipe._id %>/favorite" method="POST"
+                                                class="card-favorite-btn">
+                                                <button type="submit"
+                                                    class="btn-heart <%= user.favorites && user.favorites.some(f => f.toString() === recipe._id.toString()) ? 'favorited' : '' %>">
+                                                    <%= user.favorites && user.favorites.some(f=> f.toString() ===
+                                                        recipe._id.toString()) ? '❤️' : '🤍' %>
+                                                </button>
+                                            </form>
+                                            <% } %>
+                                                <div class="content">
+                                                    <h3><a href="/recipes/<%= recipe._id %>">
+                                                            <%= recipe.title %>
+                                                        </a></h3>
+                                                    <div class="meta">
+                                                        <span>🕒 <%= recipe.cookingTime %></span>
+                                                        <span>👨‍🍳 <%= recipe.difficulty %></span>
+                                                        <% if (recipe.category) { %>
+                                                            <span>🏷️ <%= recipe.category %></span>
+                                                            <% } %>
+                                                    </div>
+                                                    <p>By <%= recipe.createdBy ? recipe.createdBy.username : 'Unknown'
+                                                            %>
+                                                    </p>
+                                                </div>
+                                    </div>
+                                    <% }) %>
+                                        <% } else { %>
+                                            <p>No recipes found. Be the first to add one!</p>
+                                            <% } %>
+                        </div>
+        </div>
+</body>
+
+</html>
